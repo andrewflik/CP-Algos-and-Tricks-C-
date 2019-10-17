@@ -1,1 +1,1 @@
-# Competitve Programming Refrence
+# Competitive Programming Reference
