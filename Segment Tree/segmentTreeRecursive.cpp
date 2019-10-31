@@ -57,10 +57,10 @@ int main(){
 	for(int i=0; i<n; cin >> ar[i], i++);
 	//for(int i=0; i<n; cout << ar[i] << " ", i++);
 	build(1, ar, 0, n-1);
-	for(int i=0; i<2*n-1; cout << tree[i] << " ", i++);
+	for(int i=0; i<=2*n-1; cout << tree[i] << " ", i++);
 	cout << endl;
 	update(1, 10, 4, 0, n-1);
-	for(int i=0; i<2*n-1; cout << tree[i] << " ", i++);
+	for(int i=0; i<=2*n-1; cout << tree[i] << " ", i++);
 	cout << endl;
 	// Queries
 	cout << query(1, 0, n-1, 0, 2) << endl;
