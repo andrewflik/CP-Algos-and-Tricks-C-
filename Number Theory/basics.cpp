@@ -38,10 +38,10 @@ int sp[maxSize];	// Store smallest prime
 int phi[maxSize];	// Store coprimes 
 void sieve(){	// Use li to avoid seg fault
 	fill(temp, temp+maxSize, true);
-	for(li i=2; i<=maxSize; i++){	// Dont sieve till root
+	for(li i=2; i<maxSize; i++){	// Dont sieve till root
 		if(temp[i]){			// If you want to store 
 			sp[i] = i;			// the smallest prime
-			for(li j=i*i; j<=maxSize; j+=i)
+			for(li j=i*i; j<maxSize; j+=i)
 				temp[j] = false, sp[j] = (sp[j]) ? sp[j] : i;
 		}
 	}
@@ -89,10 +89,10 @@ int phi_(int n){
 }
 void phi_till_n(){
 	phi[0] = 0, phi[1] = 1;
-	for(int i=2; i<=maxSize; phi[i] = i, i++);
-	for(int i=2; i<=maxSize; i++){
+	for(int i=2; i<maxSize; phi[i] = i, i++);
+	for(int i=2; i<maxSize; i++){
 		if(phi[i] == i){	// If not touched 
-			for(int j=i; j<=maxSize; j+=i){
+			for(int j=i; j<maxSize; j+=i){
 				phi[j] -= phi[j]/i;
 			}
 		}
