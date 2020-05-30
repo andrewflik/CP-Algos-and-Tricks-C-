@@ -5,29 +5,27 @@
     Time - 1.14s
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
-const int si = 10001;
-vector<bool> v(si, true);
-vector<int> primes;
+const int si = 1e8;
+bool primes[si];
+vector<int> f;
 void sieve(){
-	// Mark out all even integers
-	for(long j=4; j<=si; j+=2)
-		v[j] = false;
-	
-	v[0] = v[1] = false;
-	for(long i=3; i<=sqrt(si); i+=2){
-		if(v[i]){
-			for(long j=i*i; j<=si; j=j+(i*2))
-				v[j] = false;
+	fill(primes, primes+si, true);
+	primes[0] = primes[1] = false;
+	for(int i=2; i<10000; i++){
+		if(primes[i]){
+			for(int j=i+i; j<si; j+=i)
+				primes[j] = false;
 		}
 	}
-	primes.push_back(2);
-	for(long i=3; i<si; i+=2)
-		if(v[i])
-			primes.push_back(i);
-	for(long i=0; i<primes.size(); i+=100)
-		cout << primes[i] << "\n";
+	f.push_back(2);
+	for(int i=3; i<si; i+=2)
+		if(primes[i])
+			f.push_back(i);
+	for(int i=0; i<f.size(); i+=100)
+		cout << f[i] << "\n";
 }
 int main() {
 	sieve();
