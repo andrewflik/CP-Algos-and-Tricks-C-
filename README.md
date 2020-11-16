@@ -10,3 +10,6 @@
 * https://brilliant.org/wiki/fermats-little-theorem/
 * https://crypto.stanford.edu/pbc/notes/numbertheory/millerrabin.html
 
+ Some adhoc tricks
+* https://www.geeksforgeeks.org/equal-sum-xor/
+
