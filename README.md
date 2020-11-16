@@ -11,5 +11,6 @@
 * https://crypto.stanford.edu/pbc/notes/numbertheory/millerrabin.html
 
  Some adhoc tricks
-* https://www.geeksforgeeks.org/equal-sum-xor/
+ * https://codeforces.com/blog/entry/84150
+ * https://www.geeksforgeeks.org/equal-sum-xor/
 
