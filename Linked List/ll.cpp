@@ -78,6 +78,4 @@ int main(){
     // Print Middle
     node *middleRef = middle(root);
     cout << middleRef->data << endl;
-    // Merge Sort
-    sort(root);
 }
