@@ -31,13 +31,14 @@ void middle(node *head, node **a, node **b){
     }
     *a = head;
     *b = first->next;
-    first->next = nullptr;
+    first->next = nullptr;  // Divide the linked list into two parts litreally
 }
 node* mergell(node *first, node *second){
     if(!first)
         return second;
     else if(!second)
         return first;
+
     node *result = NULL;
     if(first->data <= second->data){
         result = first;
@@ -46,6 +47,22 @@ node* mergell(node *first, node *second){
         result = second;
         result->next = mergell(first, second->next);
     }
+    return result;
+}
+node* mergell2(node *first, node *second){
+    node *result = NULL, *temp = NULL;
+    while(first and second){    
+        if(first->data <= second->data){
+            result = first;
+            first = first->next;
+        }else{
+            result = second;
+            second = second->next;
+        }
+        result = result->next;
+        result->next = temp;
+    }       
+    result->next = nullptr;
     return result;
 }
 void mergesort(node **head){
@@ -57,7 +74,7 @@ void mergesort(node **head){
     mergesort(&a);
     mergesort(&b);
     //cout << a->data << " " << b->data << endl;
-    *head = mergell(a, b);
+    *head = mergell2(a, b);
 }
 int main(){
     head = new node(5);
