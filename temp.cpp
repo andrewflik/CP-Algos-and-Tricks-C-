@@ -1,22 +1,42 @@
-#include<bits/stdc++.h>
-#define ll long long
+#include <iostream>
+#include<string>
 using namespace std;
-int main(){
-    int t;
-    cin >> t;
-    while(t--){
-        int n;
-        cin >> n;
-        if(n == 2 or n == 17 or n == 289){  // remove combs of 2 & 17
-            cout << "Mike\n";
-        }else if(n == 34){
-            cout << "Tom\n";
-        }else{
-            int f = 0;
-            for(int i=2; i*i<=n; i++){
-                if(n%i==0){f = 1; break;}
-            }
-            cout << (f == 1 ? "Mike\n" : "Tom\n");
-        }
+ 
+class Base
+{
+public:
+    virtual string print() 
+    {
+        return "This is Base class";
     }
+};
+ 
+class Derived : public Base
+{
+public:
+    string print() 
+    {
+        return "This is Derived class";
+    }
+};
+ 
+class D : public Derived
+{
+public:
+    virtual string print() 
+    {
+        return "This is D class";
+    }
+};
+ 
+// void describe(Derived p)
+// {
+//     cout << p.print() << endl;
+// }
+ 
+int main()
+{
+    Base *b = new D;
+    cout << b->print();
+    return 0;
 }
