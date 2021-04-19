@@ -1,12 +1,16 @@
 /*
     Problem - Building Teams
 */
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<queue>
 using namespace std;
 const int maxn = 1e5;
-vector<int> g[maxn+5], v(maxn+5, -1), p, used(maxn+5);
+vector<int> g[maxn+5], v(maxn+5, -1), used(maxn+5);
 int main(){
-    int n, m, k=0;
+    ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+    int n, m;
     cin >> n >> m;
     for(int i=0, x,y; i<m; i++)
         cin >> x >> y, g[x].push_back(y), g[y].push_back(x);
@@ -21,13 +25,7 @@ int main(){
                 if(!used[c]){
                     used[c] = 1;
                     if(v[c] == -1){
-                        v[i] = (v[curr] == 1 ? 2 : 1);
-                    }else{
-                        // if assigned -> check for confliction
-                        if(v[c] != v[curr]){
-                            cout << "IMPOSSIBLE\n";
-                            return 0;
-                        }
+                        v[c] = (v[curr] == 1 ? 2 : 1);
                     }
                     q.push(c);
                 }else{

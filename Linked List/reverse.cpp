@@ -77,11 +77,11 @@ int main(){
     root->next->next->next = new node(44);
     root->next->next->next->next = new node(55);
     root->next->next->next->next->next = nullptr;
-    //print(root);
-    //reverse(&root);
-    //cout << endl;
     print(root);
+    reverse(&root);
     cout << endl;
-    swap(&root, 12, 55);
     print(root);
+    //cout << endl;
+    //swap(&root, 12, 55);
+    //print(root);
 }
