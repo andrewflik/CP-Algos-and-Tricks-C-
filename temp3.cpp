@@ -1,36 +1,48 @@
 // Q3 - Mid point ll
 #include <bits/stdc++.h>
 using namespace std;
-class node{
-    public:
-    int data;
-    node *next;
-    node(int d):data(d){next=nullptr;}
-}*root;
-void print(node *root){
-    while(root)
-        cout << root->data << " ", root=root->next;
-}
-int getMid(node *root){
-    if(!root) return -1;
-    node *f1, *f2;
-    f1 = f2 = root;
-    while(f2 && f2->next){
-        f1 = f1->next;
-        f2 = f2->next->next;
+vector<int> g[1005];
+int32_t main(){
+    int n, m, c, t;
+    cin >> n >> m >> t >> c;
+    if(n == 1){
+        cout << 0 << endl;
+        return 0;
     }
-    return f1->data;
-}
-int main(){
-    root = new node(12);
-    root->next = new node(15);
-    root->next->next = new node(13);
-    root->next->next->next = new node(10);
-    root->next->next->next->next = new node(5);
-    root->next->next->next->next->next = new node(8);
-    root->next->next->next->next->next->next = new node(11);
-    // now the fn that does it
-    print(root);
-    cout << endl;
-    cout << getMid(root);
+    if(n == 2){
+        cout << t << endl;
+        return 0;
+    }
+    // Graph Input
+    for(int i=0, u, v; i<m; i++) cin >> u >> v, g[u].push_back(v), g[v].push_back(u); 
+    // BFS -> Find shorted path and use that
+    queue<int> q; // {node, min_len}
+    vector<bool> v(n+1, false);
+    vector<int> dist(n+1, INT_MAX);
+    int path = 0;
+    q.push(1), v[1] = true, dist[1] = 0;
+    while(!q.empty()){
+        int curr = q.front(); q.pop();
+        if(curr == n){
+            break;
+        }
+        for(auto i : g[curr]){
+            if(!v[i])
+                q.push(i), v[i] = true, dist[i] = dist[curr] + 1;
+        }
+    }
+    // cout << dist[n] << endl;
+    // dist[n] stores the shortest path to 'n'
+    int te = 0, nt = 0;
+    for(int i=0; i < dist[n]; i++){
+        int area = ceil(floor(te/t));
+        if(area%2==0)
+            te += c;
+        else 
+            te += c + (nt-te);
+        while(nt <= te)
+            nt += t;
+        //cout << te << " " << nt << endl;
+    }
+    cout << te << endl;
 }

@@ -18,6 +18,7 @@ struct tries{
                 curr->ch[i-'a'] = new tries();
             curr = curr->ch[i-'a']; // move along 
         }
+        curr->v = true;
     }
     bool search(string key){
         tries *curr = this;
@@ -32,16 +33,16 @@ struct tries{
 void dfs(tries *curr){
     for(int i=0; i<26; i++){
         if(curr->ch[i]){
-            cout << char(i + 'a') << " ";
+            cout << char(i + 'a') << " " << curr->v << endl;
             dfs(curr->ch[i]);
         }
     }
 }
 int main(){
     tries *head = new tries();
-    head->insert("hello");
-    head->insert("hey");
-    head->insert("la");
+    head->insert("c");
+    head->insert("i");
+    head->insert("f");
     dfs(head);
     cout << endl;
     cout << head->search("helo");
